@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PocketFish – Support</title>
+    <style>
+      :root {
+        --bg: #f3f6fb;
+        --card: #ffffff;
+        --text: #1d2430;
+        --muted: #5b6678;
+        --accent: #2563eb;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme='light']) {
+          --bg: #0b0e14;
+          --card: #151a23;
+          --text: #e7ecf3;
+          --muted: #9aa6b8;
+          --accent: #38bdf8;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme='dark'] {
+        --bg: #0b0e14;
+        --card: #151a23;
+        --text: #e7ecf3;
+        --muted: #9aa6b8;
+        --accent: #38bdf8;
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.55 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      main {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 20px 16px 40px;
+      }
+      section {
+        background: var(--card);
+        border-radius: 14px;
+        padding: 4px 18px;
+        margin: 14px 0;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 8px 0 2px;
+      }
+      h2 {
+        font-size: 17px;
+        margin: 14px 0 4px;
+      }
+      p {
+        margin: 6px 0 12px;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      a {
+        color: var(--accent);
+      }
+    </style>
+    <script>
+      // the app passes its own light / dark scheme
+      const t = new URLSearchParams(location.search).get('theme');
+      if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>PocketFish support</h1>
+      <p class="muted">Scan chess diagrams, analyse them with Stockfish, and train with Solve mode, rated puzzles and games against the engine — on your phone.</p>
+
+      <section>
+        <h2>Contact</h2>
+        <p>
+          Questions, ideas, or a scan that went wrong? Write to
+          <a href="mailto:PocketFish@AgileWithAI.com" target="_top">PocketFish@AgileWithAI.com</a>. If a position was misread, please
+          attach the photo or screenshot: it helps make recognition better. In the app, <b>Settings → Help &amp;
+          feedback</b> opens a mail with the app version filled in.
+        </p>
+      </section>
+
+      <section>
+        <h2>The board wasn't found, or the frame is off</h2>
+        <p>
+          Drag the four corners onto the corners of the 8×8 squares (not the outer frame); the magnifier shows exactly
+          where each corner sits. Photos work best when the board fills most of the picture, is roughly upright and has
+          no strong glare.
+        </p>
+      </section>
+
+      <section>
+        <h2>A piece was misread</h2>
+        <p>
+          The review screen after a scan lets you fix it: drag pieces, or pick a piece from the palette and tap the
+          square. Squares the app was unsure about are highlighted.
+        </p>
+      </section>
+
+      <section>
+        <h2>Whose move is it?</h2>
+        <p>
+          If a king is in check, the app knows whose move it is. Otherwise it uses your default (Settings → Scanning);
+          switch it with the white and black king buttons under the board.
+        </p>
+      </section>
+
+      <section>
+        <h2>Analyze, Solve or Play?</h2>
+        <p>
+          <b>Analyze</b> shows the engine's evaluation, best lines and arrows. <b>Solve</b> hides them so you can find
+          the move yourself: the engine then grades your move, gives hints or shows the solution. You choose after each
+          scan, or with the switch at the top of the main screen. <b>Play</b> lets you play the position out against
+          Stockfish at one of eight levels; you take the side to move, and <b>Switch sides</b> hands it to the engine.
+        </p>
+      </section>
+
+      <section>
+        <h2>How does the puzzle rating work?</h2>
+        <p>
+          Every puzzle counts once, like a game against the puzzle's own rating: solved at the first try raises your
+          rating, a wrong move, a hint or the solution lowers it. A "?" after the rating means it is still settling
+          (after your first few puzzles). The puzzles come from the lichess.org puzzle database (CC0) and are part of
+          the app, so they work offline too.
+        </p>
+      </section>
+
+      <section>
+        <h2>Does it need the internet? Which devices?</h2>
+        <p>
+          No internet needed: recognition and the engine run on your device. PocketFish needs iOS 16.4 or newer (iPhone 8 /
+          X and later).
+        </p>
+      </section>
+
+      <section>
+        <h2>Privacy and source code</h2>
+        <p>
+          PocketFish collects no data and never uploads your photos — see the <a href="privacy.html">privacy policy</a>. To
+          remove what the app keeps on your phone (settings, recent scans, Solve mode score, puzzle rating), use <b>Settings → Privacy →
+          Delete all data</b>; recent scans can also be switched off there. PocketFish's source code is free software under the GNU GPL v3
+          and on <a href="https://github.com/ImanSoltan/PocketFish-source" target="_top">GitHub</a> (the trained recognition
+          models are not part of it).
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

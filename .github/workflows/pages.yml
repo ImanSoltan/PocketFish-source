@@ -1,0 +1,39 @@
+# Publishes the privacy and support pages (App Store Connect needs their URLs) to GitHub Pages. The app
+# itself isn't published on the web: its recognition models aren't public. Runs in the public repository
+# (PocketFish-source); enable it once there: Settings -> Pages -> Source: GitHub Actions.
+name: Deploy privacy and support pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # only in the public repository: the private one has no Pages
+    if: github.repository == 'ImanSoltan/PocketFish-source'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir site
+          cp public/privacy.html public/support.html site/
+          cp public/support.html site/index.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

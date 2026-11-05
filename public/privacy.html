@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PocketFish – Privacy policy</title>
+    <style>
+      :root {
+        --bg: #f3f6fb;
+        --card: #ffffff;
+        --text: #1d2430;
+        --muted: #5b6678;
+        --accent: #2563eb;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme='light']) {
+          --bg: #0b0e14;
+          --card: #151a23;
+          --text: #e7ecf3;
+          --muted: #9aa6b8;
+          --accent: #38bdf8;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme='dark'] {
+        --bg: #0b0e14;
+        --card: #151a23;
+        --text: #e7ecf3;
+        --muted: #9aa6b8;
+        --accent: #38bdf8;
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.55 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      main {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 20px 16px 40px;
+      }
+      section {
+        background: var(--card);
+        border-radius: 14px;
+        padding: 4px 18px;
+        margin: 14px 0;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 8px 0 2px;
+      }
+      h2 {
+        font-size: 17px;
+        margin: 14px 0 4px;
+      }
+      p {
+        margin: 6px 0 12px;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      a {
+        color: var(--accent);
+      }
+    </style>
+    <script>
+      // the app passes its own light / dark scheme
+      const t = new URLSearchParams(location.search).get('theme');
+      if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>Privacy policy</h1>
+      <p class="muted">PocketFish · last updated 3 November 2026</p>
+
+      <section>
+        <h2>In short</h2>
+        <p>
+          PocketFish doesn't collect, store or share any personal data. There are no accounts, no ads, no analytics and no
+          tracking, and the app doesn't send anything anywhere: reading the photo and the chess engine both run on your
+          device, which is why PocketFish also works without an internet connection. The one exception is a tip, if you
+          choose to give one: Apple handles that payment (see <b>Tips</b> below). PocketFish is made by Iman Soltanzadeh (Agile With AI).
+        </p>
+      </section>
+
+      <section>
+        <h2>Photos</h2>
+        <p>
+          Photos you take, choose or paste are processed on your device to recognise the chess position. They are never
+          uploaded and are not saved to your photo library. While you scan, the app keeps a temporary copy in its private
+          temporary folder, which the system clears automatically. PocketFish only sees the photos you take, pick or paste;
+          it has no access to the rest of your photo library, and it only reads the clipboard when you tap
+          <b>Paste image</b>.
+        </p>
+      </section>
+
+      <section>
+        <h2>What stays on your device</h2>
+        <p>
+          The app keeps your settings, the position you were last looking at, your Solve mode score, your puzzle rating
+          and the puzzles you played, the side and engine level you last played with, and up to 24 recent scans (the
+          position and a small picture of the board) in its own storage on your device. In Settings → Privacy
+          you can turn off <b>Remember recent scans</b>, or remove everything with <b>Delete all data</b>; deleting the
+          app removes everything too.
+        </p>
+        <p>
+          The chess engine (Stockfish) and the board recognition run entirely on your device, so PocketFish works without an
+          internet connection.
+        </p>
+      </section>
+
+      <section>
+        <h2>Tips</h2>
+        <p>
+          Everything in PocketFish is free. In the iPhone app you can leave an optional tip under Settings → Help &amp;
+          feedback. Apple processes the payment through the App Store under Apple's own privacy policy; PocketFish
+          receives no name, email address or payment details. The app only remembers on your device that you gave a
+          tip, to say thank you; <b>Delete all data</b> removes that too.
+        </p>
+      </section>
+
+      <section>
+        <h2>Links to other websites</h2>
+        <p>
+          If you tap <b>lichess.org</b> or <b>chess.com</b>, the current position is sent to that website as part of
+          the link, and that website's privacy policy applies. The same goes for opening the source code on GitHub.
+        </p>
+      </section>
+
+      <section>
+        <h2>Feedback</h2>
+        <p>
+          If you send feedback, it goes out through your own mail app. Your message and email address are only used to
+          reply to you. The prefilled mail includes the app version and your device's system version, which you can
+          remove before sending.
+        </p>
+      </section>
+
+      <section>
+        <h2>Children</h2>
+        <p>PocketFish collects no data from anyone, including children.</p>
+      </section>
+
+      <section>
+        <h2>Changes and contact</h2>
+        <p>
+          If this policy changes, the new version will be published on this page. Questions:
+          <a href="mailto:PocketFish@AgileWithAI.com" target="_top">PocketFish@AgileWithAI.com</a>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

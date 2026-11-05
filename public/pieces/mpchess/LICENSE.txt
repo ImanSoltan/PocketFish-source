@@ -1,0 +1,3 @@
+"mpchess" chess pieces by Maxime Chupin (https://github.com/chupinmaxime), via lichess.org.
+Licensed under the GNU General Public License, version 3 or later:
+https://www.gnu.org/licenses/gpl-3.0.html

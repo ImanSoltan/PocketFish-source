@@ -1,0 +1,4 @@
+# Kept out of the public source (scripts/publish-source.sh exports with git archive): the trained
+# recognition models and their training pipeline are © Iman Soltanzadeh, all rights reserved, not GPL.
+public/models export-ignore
+ml export-ignore

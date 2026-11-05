@@ -1,0 +1,53 @@
+{
+  "name": "pocketfish",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Scan a chess diagram from a book or screen, get an interactive board and on-device Stockfish analysis.",
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/copy-engine.mjs && node scripts/licenses.mjs",
+    "dev": "vite",
+    "build": "tsc -b && node scripts/licenses.mjs && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "e2e": "playwright test",
+    "cap:sync": "npm run build && cap sync",
+    "release-check": "node scripts/release-check.mjs",
+    "testflight": "bash scripts/testflight.sh",
+    "setup:mac": "bash scripts/setup-mac.sh",
+    "update": "bash scripts/apply-update.sh",
+    "publish-source": "bash scripts/publish-source.sh"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/browser": "^8.0.5",
+    "@capacitor/camera": "^8.2.5",
+    "@capacitor/clipboard": "^8.0.1",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.5.2",
+    "@capacitor/status-bar": "^8.0.4",
+    "chess.js": "^1.4.0",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "stockfish": "^19.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2",
+    "@playwright/test": "1.56.1",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.3",
+    "vitest": "^5.0.3"
+  },
+  "overrides": {
+    "uuid": "^11.1.1"
+  }
+}

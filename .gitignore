@@ -1,0 +1,36 @@
+node_modules/
+dist/
+public/engine/
+public/licenses.txt
+ios/App/App/public/
+android/app/src/main/assets/public/
+test-results/
+playwright-report/
+*.log
+.DS_Store
+
+# ML: downloaded assets, generated datasets and checkpoints
+ml/.cache/
+ml/data
+ml/data/
+ml/runs/
+ml/node_modules/
+__pycache__/
+*.pyc
+*.tsbuildinfo
+
+# signing and App Store files: keep them outside the repository
+*.p8
+*.p12
+*.cer
+*.mobileprovision
+*.xcarchive
+*.ipa
+*.dSYM.zip
+
+# update files (scripts/apply-update.sh), local settings and editors
+*.bundle
+.env
+.env.*
+.idea/
+.vscode/

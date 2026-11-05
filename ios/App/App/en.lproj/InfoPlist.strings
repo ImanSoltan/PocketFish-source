@@ -1,0 +1,5 @@
+/* Permission prompts in this language. The English texts are also in Info.plist. */
+CFBundleDisplayName = "PocketFish";
+NSCameraUsageDescription = "PocketFish uses the camera to photograph chess diagrams so it can recognise the position.";
+NSPhotoLibraryUsageDescription = "PocketFish opens photos and screenshots of chess diagrams that you choose.";
+NSPhotoLibraryAddUsageDescription = "PocketFish doesn't save anything to your photo library.";
