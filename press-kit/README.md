@@ -8,6 +8,7 @@ Images and copy for the website and social posts. Everything here is taken from 
 | `screens/1-scan.png` … `8-dark.png` | 1026 × 1944, transparent | phone screens with rounded corners and a soft shadow, ready to place on any background |
 | `screens/raw/*.png` | 1179 × 2556 | the same screens without the frame (iPhone 15 resolution), to frame or crop yourself |
 | `images/hero-phones.png` | 2400 × 1720, transparent | three phones (scan, analysis, puzzle) for a hero section |
+| `images/book-companion.png` | 2400 × 1800, transparent | a chess book page and the phone analysing its diagram: the companion idea |
 | `images/social-card.png` | 2400 × 1260 (1200 × 630 @2x) | link previews (`og:image`), LinkedIn and X posts |
 | `images/square-post.png` | 2160 × 2160 (1080 × 1080 @2x) | square social posts |
 | `images/app-icon.png`, `app-icon-dark.png` | 1024 × 1024 | the app icon (light and dark) |

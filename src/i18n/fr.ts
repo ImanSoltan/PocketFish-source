@@ -348,6 +348,7 @@ export const fr: Messages = {
   'about.developer': 'Développeur',
   'about.by': 'Un produit d’<b>{brand}</b>',
   'about.contact': 'Contact',
+  'about.imprint': 'Mentions légales',
   'about.source': 'Code source',
   'about.sourceHint': 'Logiciel libre sous licence GNU GPL v3',
   'about.thanks': 'Remerciements',

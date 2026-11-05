@@ -10,6 +10,9 @@ export const BRAND = 'Agile With AI';
 export const BRAND_URL = 'https://agilewithai.com/';
 /** The studio's website in German, for the app in German. */
 export const BRAND_URL_DE = 'https://agilewithai.com/de';
+/** The studio's legal notice (Impressum, § 5 DDG), in English and German. */
+export const LEGAL_URL = 'https://agilewithai.com/legal-notice';
+export const LEGAL_URL_DE = 'https://agilewithai.com/de/impressum';
 
 /** Where feedback and support mail goes (shown in the app, on support.html and privacy.html). */
 export const SUPPORT_EMAIL = 'PocketFish@AgileWithAI.com';

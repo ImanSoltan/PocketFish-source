@@ -4,7 +4,8 @@
 //
 // screens/raw/   full-resolution screenshots (iPhone 15 size, 1179 × 2556 px)
 // screens/       the same, as rounded phone screens with a soft shadow on a transparent background
-// images/        hero-phones.png (three phones, transparent), social-card.png (link previews, 1200 × 630 @2x),
+// images/        hero-phones.png (three phones, transparent), book-companion.png (a chess book page and the
+//                phone analysing its diagram, transparent), social-card.png (link previews, 1200 × 630 @2x),
 //                square-post.png (1080 × 1080), the app icon in light and dark
 // Uses Playwright's Chromium (CHROMIUM_PATH to override).
 import fs from 'node:fs';
@@ -12,6 +13,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from '@playwright/test';
 import { preview } from 'vite';
+import { bookPage } from './book-page.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const kit = path.join(root, 'press-kit');
@@ -193,6 +195,18 @@ try {
     true,
   );
 
+  // the companion: a page of a chess book and the phone analysing its diagram
+  await render(
+    'images/book-companion.png',
+    1200,
+    900,
+    `<div style="position: relative; width: 1200px; height: 900px">
+       <div style="position: absolute; left: 190px; top: 70px; transform: rotate(-6deg)">${bookPage('en', { width: 520 })}</div>
+       <img class="phone" src="${src('3-analyze')}" style="position: absolute; left: 640px; top: 150px; width: 340px; transform: rotate(4deg)">
+     </div>`,
+    true,
+  );
+
   const icon = `data:image/svg+xml;base64,${fs.readFileSync(path.join(root, 'public', 'icon.svg')).toString('base64')}`;
   const backdrop = `background: radial-gradient(80% 70% at 85% 10%, #60a5fa 0%, transparent 60%),
                     radial-gradient(70% 60% at 0% 100%, #1e3a8a 0%, transparent 70%),
@@ -215,13 +229,14 @@ try {
            <div style="font-size: 64px; font-weight: 800; letter-spacing: -1.5px">PocketFish</div>
          </div>
          <div style="margin-top: 26px; font-size: 34px; font-weight: 700; line-height: 1.2; letter-spacing: -0.5px">
-           Scan a chess diagram.<br>Analyse it with Stockfish.</div>
+           The companion for<br>every chess book.</div>
          <div style="margin-top: 16px; font-size: 22px; line-height: 1.45; opacity: 0.9">
-           Rated puzzles and games against the engine too — all on your iPhone, offline and private.</div>
+           Scan any diagram: Stockfish shows the best move, checks your answer or plays it out with you — on your
+           iPhone, offline and private.</div>
          <div style="margin-top: 30px">${pill('Now in beta testing on iPhone')}</div>
        </div>
-       <img class="phone" src="${src('3-analyze')}" style="position: absolute; left: 700px; top: 70px; width: 290px; transform: rotate(-4deg)">
-       <img class="phone" src="${src('5-puzzles')}" style="position: absolute; left: 905px; top: 150px; width: 260px; transform: rotate(5deg)">
+       <div style="position: absolute; left: 660px; top: 58px; transform: rotate(-6deg)">${bookPage('en', { width: 300 })}</div>
+       <img class="phone" src="${src('3-analyze')}" style="position: absolute; left: 905px; top: 140px; width: 250px; transform: rotate(4deg)">
        <div style="position: absolute; left: 72px; bottom: 34px; font-size: 18px; opacity: 0.75">An app by Agile With AI</div>
      </div>`,
   );
@@ -236,11 +251,10 @@ try {
        <div style="position: absolute; left: 0; right: 0; top: 70px; text-align: center">
          ${pill('Now testing')}
          <div style="margin-top: 26px; font-size: 76px; font-weight: 800; letter-spacing: -2px">PocketFish</div>
-         <div style="margin-top: 10px; font-size: 32px; font-weight: 600; opacity: 0.92">Stockfish in your pocket</div>
+         <div style="margin-top: 10px; font-size: 34px; font-weight: 600; opacity: 0.92">The companion for every chess book</div>
        </div>
-       <img class="phone" src="${src('1-scan')}" style="position: absolute; left: 95px; top: 400px; width: 290px; transform: rotate(-7deg)">
-       <img class="phone" src="${src('5-puzzles')}" style="position: absolute; right: 95px; top: 400px; width: 290px; transform: rotate(7deg)">
-       <img class="phone" src="${src('3-analyze')}" style="position: absolute; left: 380px; top: 340px; width: 320px">
+       <div style="position: absolute; left: 110px; top: 330px; transform: rotate(-6deg)">${bookPage('en', { width: 420 })}</div>
+       <img class="phone" src="${src('3-analyze')}" style="position: absolute; left: 560px; top: 380px; width: 330px; transform: rotate(4deg)">
      </div>`,
   );
 

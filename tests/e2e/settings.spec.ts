@@ -164,3 +164,26 @@ test('About links the studio’s website, in German for the app in German', asyn
   await page.getByTestId('developer').click();
   await expect.poll(() => page.evaluate(() => (window as unknown as { opened: string[] }).opened)).toEqual(['https://agilewithai.com/de']);
 });
+
+test('About links the legal notice, in German for the app in German', async ({ page }) => {
+  await page.addInitScript(() => {
+    (window as unknown as { opened: string[] }).opened = [];
+    window.open = (url?: string | URL) => {
+      (window as unknown as { opened: string[] }).opened.push(String(url));
+      return null;
+    };
+  });
+  await page.goto('/');
+  await page.getByLabel('Settings').click();
+  await page.getByTestId('about').click();
+  await expect(page.getByTestId('imprint')).toContainText('Legal notice');
+  await page.getByTestId('imprint').click();
+  await expect.poll(() => page.evaluate(() => (window as unknown as { opened: string[] }).opened)).toEqual(['https://agilewithai.com/legal-notice']);
+  await page.evaluate(() => localStorage.setItem('chessy.settings.v1', JSON.stringify({ language: 'de' })));
+  await page.reload();
+  await page.getByLabel('Einstellungen').click();
+  await page.getByTestId('about').click();
+  await expect(page.getByTestId('imprint')).toContainText('Impressum');
+  await page.getByTestId('imprint').click();
+  await expect.poll(() => page.evaluate(() => (window as unknown as { opened: string[] }).opened)).toEqual(['https://agilewithai.com/de/impressum']);
+});

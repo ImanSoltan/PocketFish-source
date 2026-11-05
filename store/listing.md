@@ -3,7 +3,8 @@
 Texts to paste into App Store Connect. Character limits are Apple's; the counts below are for
 the English texts.
 
-Privacy is the thread through the whole listing: most scanner apps send your photo to a server,
+Two threads run through the listing: PocketFish is the companion for every chess book (scan a diagram, ask
+Stockfish, check your answer, play on), and it is private: most scanner apps send your photo to a server,
 PocketFish reads it on the phone. The App Store shows the *Data Not Collected* label next to it.
 
 ## App name (max 30)
@@ -13,15 +14,21 @@ PocketFish reads it on the phone. The App Store shows the *Data Not Collected* l
 
 ## Subtitle (max 30)
 
-`Scan & solve chess diagrams` (27) — or, leading with privacy, `Private, offline chess scanner` (30).
+`Companion for every chess book` (30) — or, leading with privacy, `Private, offline chess scanner` (30).
 
 ## Promotional text (max 170, can be changed any time without review)
 
-Scan a chess diagram and analyse it with Stockfish, solve rated puzzles or play the position out against the engine. All on your phone: no account, no ads, no internet. (168)
+The companion for every chess book: scan a diagram, ask Stockfish, check your answer or play the position on. All on your iPhone: no account, no ads, no internet. (162)
 
 ## Description (max 4000)
 
-Turn any chess diagram into a position you can play with — privately. Point your camera at a diagram in a book, a magazine or on a screen, or pick a screenshot: PocketFish recognises the board and every piece right on your iPhone and opens it on an interactive board. Nothing is uploaded, and it works without an internet connection.
+The companion for every chess book. Point your camera at a diagram in a book, a magazine or on a screen, or pick a screenshot: PocketFish recognises the board and every piece right on your iPhone and opens the position on an interactive board, ready to analyse, to solve or to play on. Nothing is uploaded, and it works without an internet connection.
+
+MADE FOR YOUR CHESS BOOKS
+• Check your answer to a puzzle in the book before you turn to the solutions
+• Ask Stockfish about the move the author doesn’t explain
+• Play a position on from the page against the engine
+• Reads printed diagrams old and new, even engraved ones from a century ago
 
 PRIVATE BY DESIGN
 • Board recognition and the Stockfish engine run entirely on your iPhone
@@ -67,13 +74,13 @@ Everything in PocketFish is free. If you like it, you can leave an optional tip 
 
 In English, German, Spanish and French.
 
-PocketFish's source code is free software under the GNU GPL v3 and on GitHub, so anyone can check what the app does; the trained recognition models are not part of it. Chess engine: Stockfish (GPLv3) by the Stockfish developers.
+PocketFish's source code is free software under the GNU GPL v3 and on GitHub, so anyone can check what the app does; the trained recognition models are not part of it. Chess engine: Stockfish (GPLv3) by the Stockfish developers. PocketFish is an independent app, not affiliated with or endorsed by the Stockfish project.
 
 Requires iOS 16.4 or later.
 
 ## Keywords (max 100, comma-separated, no spaces; words in the name and subtitle count already)
 
-`scanner,stockfish,puzzle,analysis,board,book,fen,camera,engine,tactics,offline,private,photo` (92)
+`scanner,stockfish,puzzle,analysis,board,diagram,fen,camera,engine,tactics,offline,private,photo` (95)
 
 Don't use other apps' names or trademarks (lichess, chess.com, ChessExpert…) as keywords — App Review rejects that.
 If the subtitle already says *private* and *offline*, use the free space for `training,position` instead.
@@ -86,7 +93,7 @@ First release.
 
 - Support URL: `https://imansoltan.github.io/PocketFish-source/support.html`
 - Privacy policy URL: `https://imansoltan.github.io/PocketFish-source/privacy.html`
-- Marketing URL (optional): leave empty for now, later the PocketFish page on agilewithai.com
+- Marketing URL: https://agilewithai.com (later the PocketFish page there); it also leads to the legal notice
 
 Both pages are in `public/` and go live when GitHub Pages is enabled (see `store/README.md`).
 
@@ -109,19 +116,20 @@ Attachment: `store/review-sample.jpg`.
 
 ## Screenshots
 
-`store/screenshots/1-scan.jpg` … `8-themes.jpg`: 1320 × 2868 px, the 6.9-inch iPhone size (App Store
+`store/screenshots/0-book.jpg` … `8-themes.jpg` (nine): 1320 × 2868 px, the 6.9-inch iPhone size (App Store
 Connect scales them down for smaller iPhones). Regenerate after UI or name changes:
 `npm run build && node scripts/store-screenshots.mjs` (or `… de`, `es`, `fr`, `all` for the other languages,
 in `store/screenshots/<language>/`; their texts are in `listing.de.md`, `listing.es.md`, `listing.fr.md`).
 
 | file | caption |
 | --- | --- |
-| `1-scan` | Scan any chess diagram — from books, magazines or screens |
+| `0-book` | The companion for every chess book — scan a diagram, ask Stockfish, play on |
+| `1-scan` | Straight from the page — books, magazines or screenshots |
 | `2-review` | Every piece, recognised — check it and fix anything in a tap |
-| `3-analyze` | Stockfish on your phone — best moves and lines, fully offline |
-| `4-solve` | Find the move yourself — Solve mode grades every answer |
+| `3-analyze` | What the book doesn’t explain — Stockfish shows the best moves and lines |
+| `4-solve` | Solve the book’s puzzles — every answer graded, hints when you need them |
 | `5-puzzles` | Rated puzzles, offline — thousands of tactics and a daily puzzle |
-| `6-play` | Play it out against Stockfish — eight levels, from beginner to full strength |
+| `6-play` | Play on from the page — against Stockfish, from beginner to full strength |
 | `7-private` | Private by design — no account, no tracking, works offline |
 | `8-themes` | Make it yours — 6 piece sets, 5 colour schemes, dark mode |
 

@@ -346,6 +346,7 @@ export const de: Messages = {
   'about.developer': 'Entwickler',
   'about.by': 'Ein Produkt von <b>{brand}</b>',
   'about.contact': 'Kontakt',
+  'about.imprint': 'Impressum',
   'about.source': 'Quellcode',
   'about.sourceHint': 'Freie Software unter der GNU GPL v3',
   'about.thanks': 'Danksagungen',

@@ -359,6 +359,7 @@ export const en = {
   'about.developer': 'Developer',
   'about.by': 'A product by <b>{brand}</b>',
   'about.contact': 'Contact',
+  'about.imprint': 'Legal notice',
   'about.source': 'Source code',
   'about.sourceHint': 'Free software under the GNU GPL v3',
   'about.thanks': 'Acknowledgements',

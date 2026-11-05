@@ -14,24 +14,26 @@ Short badge text: `Now in beta testing` · `Beta · iPhone`
 
 - **Name:** PocketFish
 - **Tagline:** Stockfish in your pocket.
+- **What it is, in one line:** The companion for every chess book.
 - **Alternatives:** Scan a chess diagram. Analyse it with Stockfish. · Your chess books, brought to life. ·
   Private, offline chess analysis.
 
 ## One-liner (≈ 20 words)
 
-Point your iPhone at a chess diagram in a book, magazine or on a screen, and analyse the position with
-Stockfish — offline and private.
+The companion for every chess book: point your iPhone at a diagram, and Stockfish shows the best move, checks
+your answer or plays the position on with you — offline and private.
 
 ## Short description (≈ 60 words)
 
-PocketFish turns any chess diagram into a position you can play with. Take a photo of a book page or a
-screenshot, and the app recognises the board and every piece in seconds. Analyse it with Stockfish, find the
+PocketFish is the companion for every chess book: it turns any diagram into a position you can play with. Take
+a photo of a book page or a screenshot, and the app recognises the board and every piece in seconds. Analyse it with Stockfish, find the
 best move yourself in Solve mode, play it out against the engine, or train with thousands of rated puzzles.
 Everything runs on your iPhone: nothing is uploaded.
 
 ## Longer description (≈ 150 words)
 
-Chess books are full of positions worth exploring, but setting them up by hand is slow. PocketFish reads a
+Chess books are full of positions worth exploring, but setting them up by hand is slow, and the book can't
+tell you whether your own idea works. PocketFish reads a
 diagram from a photo — printed books (old engraved ones too), magazines, or a screenshot — and opens it on an
 interactive board in seconds. You can check and fix the recognised position in a tap.
 
@@ -47,6 +49,7 @@ there's no account, no ads and no tracking. It speaks English, German, Spanish a
 
 | feature | line | screenshot |
 | --- | --- | --- |
+| The companion for every chess book | Ask Stockfish what the author doesn't explain, check your answer to a puzzle, play on from the page. | `images/book-companion.png` |
 | Scan any diagram | Take a photo or pick a screenshot — the board is found automatically, even in tilted photos. | `screens/1-scan.png` |
 | Every piece, recognised | Check the position next to your photo and fix anything in a tap. | `screens/2-review.png` |
 | Stockfish on your phone | Evaluation, best lines and arrows — fully offline. | `screens/3-analyze.png` |

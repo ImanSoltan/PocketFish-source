@@ -8,56 +8,63 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from '@playwright/test';
+import { bookPage } from './book-page.mjs';
 import { preview } from 'vite';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const fixtures = path.join(root, 'tests', 'fixtures');
 
-/** Captions (title and line below) in the order of the screenshots; the same as in store/listing*.md. */
+/** Captions (title, with *words* set in gold, and line below): first the book screenshot, then the app screenshots in order; the same as in
+ * store/listing*.md. */
 const CAPTIONS = {
   en: [
-    ['Scan any chess diagram', 'From books, magazines or screens'],
-    ['Every piece, recognised', 'Check it and fix anything in a tap'],
-    ['Stockfish on your phone', 'Best moves and lines, fully offline'],
-    ['Find the move yourself', 'Solve mode grades every answer'],
-    ['Rated puzzles, offline', 'Thousands of tactics and a daily puzzle'],
-    ['Play it out against Stockfish', 'Eight levels, from beginner to full strength'],
-    ['Private by design', 'No account, no tracking, works offline'],
-    ['Make it yours', '6 piece sets, 5 colour schemes, dark mode'],
+    ['The companion for every *chess book*', 'Scan a diagram, ask Stockfish, play on'],
+    ['*Straight* from the page', 'Books, magazines or screenshots'],
+    ['Every piece, *recognised*', 'Check it and fix anything in a tap'],
+    ['What the book *doesn’t explain*', 'Stockfish shows the best moves and lines'],
+    ['Solve the book’s *puzzles*', 'Every answer graded, hints when you need them'],
+    ['*Rated puzzles*, offline', 'Thousands of tactics and a daily puzzle'],
+    ['*Play on* from the page', 'Against Stockfish, from beginner to full strength'],
+    ['*Private* by design', 'No account, no tracking, works offline'],
+    ['Make it *yours*', '6 piece sets, 5 colour schemes, dark mode'],
   ],
   de: [
-    ['Scanne jedes Schachdiagramm', 'Aus Büchern, Zeitschriften oder vom Bildschirm'],
-    ['Jede Figur erkannt', 'Prüfen und mit einem Tippen korrigieren'],
-    ['Stockfish auf dem iPhone', 'Beste Züge und Varianten, ganz offline'],
-    ['Finde den Zug selbst', 'Der Lösen-Modus bewertet jede Antwort'],
-    ['Bewertete Aufgaben, offline', 'Tausende Taktiken und eine Aufgabe des Tages'],
-    ['Spiel es gegen Stockfish aus', 'Acht Stufen, vom Anfänger bis zur vollen Stärke'],
-    ['Privat von Grund auf', 'Kein Konto, kein Tracking, funktioniert offline'],
-    ['Ganz nach deinem Geschmack', '6 Figurensätze, 5 Farbschemata, Dunkelmodus'],
+    ['Der Begleiter für jedes *Schachbuch*', 'Diagramm scannen, Stockfish fragen, weiterspielen'],
+    ['*Direkt* von der Buchseite', 'Bücher, Zeitschriften oder Bildschirmfotos'],
+    ['Jede Figur *erkannt*', 'Prüfen und mit einem Tippen korrigieren'],
+    ['Was das Buch *nicht erklärt*', 'Stockfish zeigt die besten Züge und Varianten'],
+    ['Löse die *Aufgaben* im Buch', 'Jede Antwort bewertet, Tipps, wenn du sie brauchst'],
+    ['*Bewertete Aufgaben*, offline', 'Tausende Taktiken und eine Aufgabe des Tages'],
+    ['*Spiel* von der Seite *weiter*', 'Gegen Stockfish, vom Anfänger bis zur vollen Stärke'],
+    ['*Privat* von Grund auf', 'Kein Konto, kein Tracking, funktioniert offline'],
+    ['Ganz nach *deinem Geschmack*', '6 Figurensätze, 5 Farbschemata, Dunkelmodus'],
   ],
   es: [
-    ['Escanea cualquier diagrama', 'De libros, revistas o pantallas'],
-    ['Cada pieza, reconocida', 'Revísala y corrige lo que haga falta con un toque'],
-    ['Stockfish en tu iPhone', 'Mejores jugadas y líneas, sin conexión'],
-    ['Encuentra tú la jugada', 'El modo Resolver evalúa cada respuesta'],
-    ['Problemas sin conexión', 'Miles de tácticas y un problema del día'],
-    ['Juega contra Stockfish', 'Ocho niveles, de principiante a máxima fuerza'],
-    ['Privado por diseño', 'Sin cuenta, sin rastreo, funciona sin conexión'],
-    ['A tu gusto', '6 juegos de piezas, 5 esquemas de color, modo oscuro'],
+    ['El compañero de todo *libro de ajedrez*', 'Escanea, pregunta a Stockfish y sigue jugando'],
+    ['*Directo* desde la página', 'Libros, revistas o capturas de pantalla'],
+    ['Cada pieza, *reconocida*', 'Revísala y corrige lo que haga falta con un toque'],
+    ['Lo que el libro *no explica*', 'Stockfish muestra las mejores jugadas y líneas'],
+    ['Resuelve los *problemas* del libro', 'Cada respuesta evaluada, pistas cuando las necesites'],
+    ['*Problemas* sin conexión', 'Miles de tácticas y un problema del día'],
+    ['*Sigue jugando* desde la página', 'Contra Stockfish, de principiante a máxima fuerza'],
+    ['*Privado* por diseño', 'Sin cuenta, sin rastreo, funciona sin conexión'],
+    ['A *tu gusto*', '6 juegos de piezas, 5 esquemas de color, modo oscuro'],
   ],
   fr: [
-    ['Scannez tout diagramme', 'Livres, magazines ou écrans'],
-    ['Chaque pièce reconnue', 'Vérifiez et corrigez d’un toucher'],
-    ['Stockfish dans votre iPhone', 'Meilleurs coups et variantes, hors ligne'],
-    ['Trouvez le coup vous-même', 'Le mode Résoudre note chaque réponse'],
-    ['Problèmes classés, hors ligne', 'Des milliers de tactiques et un problème du jour'],
-    ['Jouez contre Stockfish', 'Huit niveaux, de débutant à pleine puissance'],
-    ['Confidentiel par conception', 'Sans compte, sans pistage, fonctionne hors ligne'],
-    ['À votre goût', '6 jeux de pièces, 5 thèmes de couleurs, mode sombre'],
+    ['Le compagnon de tous vos *livres d’échecs*', 'Scannez, consultez Stockfish, jouez la suite'],
+    ['*Directement* depuis la page', 'Livres, magazines ou captures d’écran'],
+    ['Chaque pièce *reconnue*', 'Vérifiez et corrigez d’un toucher'],
+    ['Ce que le livre *n’explique pas*', 'Stockfish montre les meilleurs coups et variantes'],
+    ['Résolvez les *problèmes* du livre', 'Chaque réponse notée, des indices au besoin'],
+    ['*Problèmes classés*, hors ligne', 'Des milliers de tactiques et un problème du jour'],
+    ['*Jouez la suite* depuis la page', 'Contre Stockfish, de débutant à pleine puissance'],
+    ['*Confidentiel* par conception', 'Sans compte, sans pistage, fonctionne hors ligne'],
+    ['À *votre goût*', '6 jeux de pièces, 5 thèmes de couleurs, mode sombre'],
   ],
 };
 const LOCALES = { en: 'en-US', de: 'de-DE', es: 'es-ES', fr: 'fr-FR' };
-const arg = process.argv[2] ?? 'en';
+const composeOnly = process.argv.includes('--compose');
+const arg = process.argv.slice(2).find((a) => !a.startsWith('--')) ?? 'en';
 const languages = arg === 'all' ? Object.keys(CAPTIONS) : [arg];
 if (!languages.every((l) => CAPTIONS[l])) throw new Error(`unknown language ${arg}: use ${Object.keys(CAPTIONS).join(', ')} or all`);
 
@@ -130,6 +137,7 @@ const PUZZLER = JSON.stringify({
   theme: '',
   difficulty: 'normal',
 });
+const BOOK_FILE = '0-book';
 const FILES = ['1-scan', '2-review', '3-analyze', '4-solve', '5-puzzles', '6-play', '7-private', '8-themes'];
 let written = 0;
 
@@ -145,6 +153,10 @@ async function screenshots(lang) {
   const m = messages(lang);
   const shots = [];
   const shot = async (page) => shots.push(await page.screenshot());
+  const cache = path.join(root, 'playwright-report', 'store-raw', lang);
+  if (composeOnly) {
+    for (const file of FILES) shots.push(fs.readFileSync(path.join(cache, `${file}.png`)));
+  } else {
 
   // 1. scanning a book page
   let page = await phone(lang);
@@ -220,29 +232,98 @@ async function screenshots(lang) {
   await page.goto(base);
   await page.getByTestId('depth').filter({ hasText: /(1[89]|2\d)\// }).waitFor({ timeout: 90_000 });
   await shot(page);
+  fs.mkdirSync(cache, { recursive: true });
+  shots.forEach((png, i) => fs.writeFileSync(path.join(cache, `${FILES[i]}.png`), png));
+  }
 
-  // compose: caption on a gradient, the app below with rounded corners (1320 × 2868 px)
+  // compose (1320 × 2868 px): a navy backdrop with soft light, a bold title with its key words in the icon's gold,
+  // and the app in an iPhone frame (Dynamic Island, a 9:41 status bar in the colour of the app's top bar)
   const out = path.join(root, 'store', 'screenshots', lang === 'en' ? '' : lang);
   fs.mkdirSync(out, { recursive: true });
   const frame = await browser.newPage({ viewport: { width: 440, height: 956 }, deviceScaleFactor: 3 });
-  for (const [i, png] of shots.entries()) {
-    const [title, sub] = CAPTIONS[lang][i];
-    await frame.setContent(`
-      <style>
-        body { margin: 0; }
-        .bg { width: 440px; height: 956px; overflow: hidden; display: flex; flex-direction: column; align-items: center;
-              background: linear-gradient(160deg, #60a5fa 0%, #2563eb 55%, #1e3a8a 100%);
-              font-family: -apple-system, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif; color: #fff; }
-        /* the same height in every language and screenshot, so the app sits at the same place in all of them */
-        header { flex: none; height: 212px; width: 100%; box-sizing: border-box; padding: 20px 26px 18px;
-                 display: flex; flex-direction: column; justify-content: center; text-align: center; }
-        h1 { margin: 0 0 8px; font-size: 35px; line-height: 1.08; font-weight: 800; letter-spacing: -0.5px; text-wrap: balance; }
-        p { margin: 0; font-size: 18.5px; line-height: 1.25; opacity: 0.92; text-wrap: balance; }
-        img { width: 332px; border-radius: 33px; box-shadow: 0 24px 60px rgba(15, 23, 42, 0.45); }
-      </style>
-      <div class="bg" lang="${lang}"><header><h1>${title}</h1><p>${sub}</p></header><img src="data:image/png;base64,${png.toString('base64')}"></div>`);
-    await frame.screenshot({ path: path.join(out, `${FILES[i]}.jpg`), type: 'jpeg', quality: 92 });
+  const writeShot = async (file, html) => {
+    await frame.setContent(html);
+    await frame.evaluate(() => Promise.all([...document.images].map((i) => i.decode())));
+    // the status bar takes the colour of the app's top bar, and light or dark text to suit
+    await frame.evaluate(() => {
+      for (const img of document.querySelectorAll('.screen img')) {
+        const c = document.createElement('canvas');
+        c.width = img.naturalWidth;
+        c.height = 4;
+        const g = c.getContext('2d');
+        g.drawImage(img, 0, 0);
+        const [r, gr, b] = g.getImageData(Math.round(img.naturalWidth * 0.08), 1, 1, 1).data;
+        const bar = img.closest('.screen').querySelector('.status');
+        bar.style.background = `rgb(${r}, ${gr}, ${b})`;
+        bar.classList.toggle('light', 0.299 * r + 0.587 * gr + 0.114 * b < 140);
+      }
+    });
+    await frame.screenshot({ path: path.join(out, `${file}.jpg`), type: 'jpeg', quality: 92 });
     written++;
+  };
+  const title = (text) => text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  const device = (png, cls = '') => `<div class="device ${cls}"><div class="screen">
+      <div class="status"><span class="time">9:41</span><span class="island"></span>
+        <svg class="icons" viewBox="0 0 66 12" aria-hidden="true"><g fill="currentColor">
+          <rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/>
+          <rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/>
+          <path d="M28 3.2a9.5 9.5 0 0 1 12.6 0l-1.3 1.4a7.6 7.6 0 0 0-10 0Zm2.3 2.6a6 6 0 0 1 8 0l-1.3 1.4a4.1 4.1 0 0 0-5.4 0Zm2.4 2.6a2.5 2.5 0 0 1 3.2 0L34.3 10Z"/>
+          <rect x="45" y="1.5" width="18" height="9" rx="2.6" fill="none" stroke="currentColor" stroke-opacity=".45"/>
+          <rect x="46.6" y="3.1" width="14.8" height="5.8" rx="1.4"/><rect x="64" y="4.4" width="1.4" height="3.2" rx=".7" opacity=".45"/>
+        </g></svg></div>
+      <img src="data:image/png;base64,${png.toString('base64')}"></div></div>`;
+  const layout = (inner) => `
+    <style>
+      body { margin: 0; }
+      .bg { position: relative; width: 440px; height: 956px; overflow: hidden; color: #fff;
+            font-family: -apple-system, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background:
+              radial-gradient(110% 60% at 88% -6%, rgba(96, 165, 250, 0.55) 0%, rgba(96, 165, 250, 0) 62%),
+              radial-gradient(90% 45% at 0% 104%, rgba(246, 220, 150, 0.16) 0%, rgba(246, 220, 150, 0) 64%),
+              linear-gradient(172deg, #1a3f93 0%, #102c70 46%, #0b1d4d 100%); }
+      /* the same height in every language and screenshot, so the phone sits at the same place in all of them */
+      header { position: relative; height: 222px; box-sizing: border-box; padding: 40px 30px 0; text-align: center; }
+      h1 { margin: 0; font-size: 37px; line-height: 1.04; font-weight: 800; letter-spacing: -1px; text-wrap: balance; }
+      h1 em { font-style: normal; color: #f6dc96; }
+      p.sub { margin: 12px 0 0; font-size: 17px; line-height: 1.3; font-weight: 500; color: rgba(226, 236, 255, 0.82);
+              text-wrap: balance; }
+      .device { position: absolute; left: 50%; top: 226px; width: 350px; margin-left: -175px; box-sizing: border-box;
+                padding: 10px; border-radius: 60px; background: linear-gradient(150deg, #3a3f48, #121418 40%, #24272d);
+                box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.14), 0 0 0 1px rgba(0, 0, 0, 0.5),
+                            0 50px 90px -20px rgba(2, 8, 30, 0.75), 0 0 140px rgba(96, 165, 250, 0.28); }
+      .screen { position: relative; border-radius: 50px; overflow: hidden; background: #000; }
+      .screen img { display: block; width: 100%; }
+      .status { position: relative; height: 41px; display: flex; align-items: center; justify-content: space-between;
+                padding: 4px 26px 0 34px; box-sizing: border-box; color: #0b1220; }
+      .status.light { color: #fff; }
+      .time { font-size: 13.5px; font-weight: 650; letter-spacing: -0.2px; }
+      .icons { width: 54px; height: 10px; }
+      .island { position: absolute; left: 50%; top: 9px; width: 92px; height: 26px; margin-left: -46px; border-radius: 13px;
+                background: #000; }
+      .book { position: absolute; left: 20px; top: 238px; transform: rotate(-6deg); transform-origin: top left;
+              filter: drop-shadow(0 26px 40px rgba(2, 8, 30, 0.55)); }
+      .device.small { left: auto; right: 14px; top: 392px; width: 262px; margin: 0; padding: 8px; border-radius: 46px;
+                      transform: rotate(4deg); }
+      .device.small .screen { border-radius: 38px; }
+      .device.small .status { height: 31px; padding: 3px 20px 0 26px; }
+      .device.small .time { font-size: 10.5px; }
+      .device.small .icons { width: 42px; height: 8px; }
+      .device.small .island { top: 7px; width: 70px; height: 20px; margin-left: -35px; }
+    </style>
+    <div class="bg" lang="${lang}">${inner}</div>`;
+
+  // 0. the companion: a page of a chess book, and the phone analysing its diagram (the analysis screenshot)
+  {
+    const [t, sub] = CAPTIONS[lang][0];
+    await writeShot(
+      BOOK_FILE,
+      layout(`<header><h1>${title(t)}</h1><p class="sub">${sub}</p></header>
+        <div class="book">${bookPage(lang, { width: 286 })}</div>${device(shots[2], 'small')}`),
+    );
+  }
+  for (const [i, png] of shots.entries()) {
+    const [t, sub] = CAPTIONS[lang][i + 1];
+    await writeShot(FILES[i], layout(`<header><h1>${title(t)}</h1><p class="sub">${sub}</p></header>${device(png)}`));
   }
   await frame.close();
 }

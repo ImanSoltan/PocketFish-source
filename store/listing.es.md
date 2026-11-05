@@ -10,15 +10,21 @@ headings; `npm run release-check` counts every field.
 
 ## Subtitle (max 30)
 
-`Escanea y resuelve diagramas`
+`Compañero de libros de ajedrez`
 
 ## Promotional text (max 170)
 
-Escanea un diagrama de ajedrez y analízalo con Stockfish, resuelve problemas o juega contra el motor. Todo en tu iPhone: sin cuenta, sin anuncios, sin internet.
+El compañero de todo libro de ajedrez: escanea un diagrama, pregunta a Stockfish, comprueba tu solución o sigue jugando. En tu iPhone, sin cuenta ni internet.
 
 ## Description (max 4000)
 
-Convierte cualquier diagrama de ajedrez en una posición con la que jugar, con total privacidad. Apunta la cámara a un diagrama de un libro, una revista o una pantalla, o elige una captura de pantalla: PocketFish reconoce el tablero y cada pieza en tu propio iPhone y lo abre en un tablero interactivo. No se sube nada y funciona sin conexión a internet.
+El compañero de todo libro de ajedrez. Apunta la cámara a un diagrama de un libro, una revista o una pantalla, o elige una captura de pantalla: PocketFish reconoce el tablero y cada pieza en tu propio iPhone y abre la posición en un tablero interactivo, lista para analizar, resolver o seguir jugando. No se sube nada y funciona sin conexión a internet.
+
+HECHO PARA TUS LIBROS DE AJEDREZ
+• Comprueba tu respuesta a un problema del libro antes de mirar las soluciones
+• Pregunta a Stockfish por la jugada que el autor no explica
+• Sigue jugando una posición de la página contra el motor
+• Lee diagramas impresos de cualquier época, incluso grabados antiguos
 
 PRIVADO POR DISEÑO
 • El reconocimiento del tablero y el motor Stockfish funcionan íntegramente en tu iPhone
@@ -64,13 +70,13 @@ Todo en PocketFish es gratis. Si te gusta, puedes dejar una propina opcional en 
 
 La app está en español, inglés, alemán y francés.
 
-El código fuente de PocketFish es software libre bajo la GNU GPL v3 y está en GitHub, así que cualquiera puede comprobar lo que hace la app; los modelos de reconocimiento entrenados no forman parte de él. Motor de ajedrez: Stockfish (GPLv3), de los desarrolladores de Stockfish.
+El código fuente de PocketFish es software libre bajo la GNU GPL v3 y está en GitHub, así que cualquiera puede comprobar lo que hace la app; los modelos de reconocimiento entrenados no forman parte de él. Motor de ajedrez: Stockfish (GPLv3), de los desarrolladores de Stockfish. PocketFish es una app independiente, sin relación con el proyecto Stockfish ni respaldada por él.
 
 Requiere iOS 16.4 o posterior.
 
 ## Keywords (max 100, comma-separated, no spaces)
 
-`stockfish,problemas,táctica,análisis,tablero,libro,fen,cámara,motor,offline,privado,foto,jaque,mate`
+`stockfish,problemas,táctica,análisis,tablero,diagrama,fen,cámara,motor,offline,privado,jaque,mate`
 
 Words from the name and subtitle (escáner, ajedrez, escanea, resuelve, diagramas) count already.
 
@@ -88,11 +94,12 @@ The same as in English (the support and privacy pages are in English; the app sa
 
 | file | caption |
 | --- | --- |
-| `1-scan` | Escanea cualquier diagrama — De libros, revistas o pantallas |
+| `0-book` | El compañero de todo libro de ajedrez — Escanea, pregunta a Stockfish y sigue jugando |
+| `1-scan` | Directo desde la página — Libros, revistas o capturas de pantalla |
 | `2-review` | Cada pieza, reconocida — Revísala y corrige lo que haga falta con un toque |
-| `3-analyze` | Stockfish en tu iPhone — Mejores jugadas y líneas, sin conexión |
-| `4-solve` | Encuentra tú la jugada — El modo Resolver evalúa cada respuesta |
+| `3-analyze` | Lo que el libro no explica — Stockfish muestra las mejores jugadas y líneas |
+| `4-solve` | Resuelve los problemas del libro — Cada respuesta evaluada, pistas cuando las necesites |
 | `5-puzzles` | Problemas sin conexión — Miles de tácticas y un problema del día |
-| `6-play` | Juega contra Stockfish — Ocho niveles, de principiante a máxima fuerza |
+| `6-play` | Sigue jugando desde la página — Contra Stockfish, de principiante a máxima fuerza |
 | `7-private` | Privado por diseño — Sin cuenta, sin rastreo, funciona sin conexión |
 | `8-themes` | A tu gusto — 6 juegos de piezas, 5 esquemas de color, modo oscuro |

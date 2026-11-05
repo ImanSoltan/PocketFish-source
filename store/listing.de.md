@@ -9,15 +9,21 @@ section 5. Apple's limits are in the headings; `npm run release-check` counts ev
 
 ## Subtitle (max 30)
 
-`Diagramme scannen und lösen`
+`Begleiter für jedes Schachbuch`
 
 ## Promotional text (max 170)
 
-Scanne ein Schachdiagramm und analysiere es mit Stockfish, löse Aufgaben oder spiel gegen die Engine. Alles auf dem iPhone: kein Konto, keine Werbung, kein Internet.
+Der Begleiter für jedes Schachbuch: Diagramm scannen, Stockfish fragen, Lösung prüfen oder weiterspielen. Alles auf dem iPhone, ohne Konto, Werbung oder Internet.
 
 ## Description (max 4000)
 
-Mach aus jedem Schachdiagramm eine Stellung, mit der du arbeiten kannst – ganz privat. Richte die Kamera auf ein Diagramm in einem Buch, einer Zeitschrift oder auf einem Bildschirm, oder wähle ein Bildschirmfoto: PocketFish erkennt das Brett und jede Figur direkt auf deinem iPhone und öffnet die Stellung auf einem interaktiven Brett. Nichts wird hochgeladen, und alles funktioniert ohne Internetverbindung.
+Der Begleiter für jedes Schachbuch. Richte die Kamera auf ein Diagramm in einem Buch, einer Zeitschrift oder auf einem Bildschirm, oder wähle ein Bildschirmfoto: PocketFish erkennt das Brett und jede Figur direkt auf deinem iPhone und öffnet die Stellung auf einem interaktiven Brett – bereit zum Analysieren, Lösen oder Weiterspielen. Nichts wird hochgeladen, und alles funktioniert ohne Internetverbindung.
+
+GEMACHT FÜR DEINE SCHACHBÜCHER
+• Prüf deine Lösung einer Aufgabe im Buch, bevor du hinten nachschlägst
+• Frag Stockfish nach dem Zug, den der Autor nicht erklärt
+• Spiel eine Stellung direkt von der Buchseite gegen die Engine weiter
+• Liest gedruckte Diagramme jeden Alters, auch alte, gestochene
 
 PRIVAT VON GRUND AUF
 • Brett-Erkennung und die Engine Stockfish laufen komplett auf deinem iPhone
@@ -63,13 +69,13 @@ Alles in PocketFish ist kostenlos. Wenn dir die App gefällt, kannst du in den E
 
 Die App gibt es auf Deutsch, Englisch, Spanisch und Französisch.
 
-Der Quellcode von PocketFish ist freie Software unter der GNU GPL v3 und liegt auf GitHub, so kann jeder nachprüfen, was die App tut; die trainierten Erkennungsmodelle gehören nicht dazu. Schach-Engine: Stockfish (GPLv3) von den Stockfish-Entwicklern.
+Der Quellcode von PocketFish ist freie Software unter der GNU GPL v3 und liegt auf GitHub, so kann jeder nachprüfen, was die App tut; die trainierten Erkennungsmodelle gehören nicht dazu. Schach-Engine: Stockfish (GPLv3) von den Stockfish-Entwicklern. PocketFish ist eine unabhängige App und steht in keiner Verbindung zum Stockfish-Projekt.
 
 Erfordert iOS 16.4 oder neuer.
 
 ## Keywords (max 100, comma-separated, no spaces)
 
-`stockfish,aufgaben,taktik,analyse,schachbrett,schachbuch,fen,kamera,engine,offline,privat,training`
+`stockfish,aufgaben,taktik,analyse,schachbrett,diagramm,fen,kamera,engine,offline,privat,training`
 
 Words from the name and subtitle (Schach, Scanner, Diagramme, scannen, lösen) count already.
 
@@ -87,11 +93,12 @@ The same as in English (the support and privacy pages are in English; the app sa
 
 | file | caption |
 | --- | --- |
-| `1-scan` | Scanne jedes Schachdiagramm — Aus Büchern, Zeitschriften oder vom Bildschirm |
+| `0-book` | Der Begleiter für jedes Schachbuch — Diagramm scannen, Stockfish fragen, weiterspielen |
+| `1-scan` | Direkt von der Buchseite — Bücher, Zeitschriften oder Bildschirmfotos |
 | `2-review` | Jede Figur erkannt — Prüfen und mit einem Tippen korrigieren |
-| `3-analyze` | Stockfish auf dem iPhone — Beste Züge und Varianten, ganz offline |
-| `4-solve` | Finde den Zug selbst — Der Lösen-Modus bewertet jede Antwort |
+| `3-analyze` | Was das Buch nicht erklärt — Stockfish zeigt die besten Züge und Varianten |
+| `4-solve` | Löse die Aufgaben im Buch — Jede Antwort bewertet, Tipps, wenn du sie brauchst |
 | `5-puzzles` | Bewertete Aufgaben, offline — Tausende Taktiken und eine Aufgabe des Tages |
-| `6-play` | Spiel es gegen Stockfish aus — Acht Stufen, vom Anfänger bis zur vollen Stärke |
+| `6-play` | Spiel von der Seite weiter — Gegen Stockfish, vom Anfänger bis zur vollen Stärke |
 | `7-private` | Privat von Grund auf — Kein Konto, kein Tracking, funktioniert offline |
 | `8-themes` | Ganz nach deinem Geschmack — 6 Figurensätze, 5 Farbschemata, Dunkelmodus |

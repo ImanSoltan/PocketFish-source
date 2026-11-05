@@ -43,9 +43,13 @@ At <https://appstoreconnect.apple.com> → **Business** (formerly *Agreements, T
   forms (e.g. W-8BEN outside the US), and apply for the **App Store Small Business Program** so Apple takes 15 %
   instead of 30 %.
 - **EU trader status** (Digital Services Act): declare whether you're a *trader*. Apps without a declaration
-  can't be offered in the EU. Traders have their address, phone number and email shown on the EU App Store page,
-  so consider a business address. A free app with no business behind it is usually not a trade, but decide this
-  for yourself (Apple's help explains the criteria).
+  can't be offered in the EU. Traders have their address, phone number and email shown on the EU App Store page.
+  Apple's help counts in-app purchases as a sign of a trade, so with the tips PocketFish most likely is one: declare
+  it with the same address as the legal notice on agilewithai.com (already public), a phone number and
+  PocketFish@AgileWithAI.com. (Only without the tips would "not a trader" be arguable; ask a tax adviser if unsure.)
+- **Legal notice (Impressum):** German law wants it within two taps of a commercial app. The app's About screen,
+  the support page and the privacy policy link to agilewithai.com/legal-notice; in App Store Connect, set the
+  *Marketing URL* to agilewithai.com too.
 
 ## 3. Publish the privacy and support pages
 

@@ -4,8 +4,9 @@
 
 *Stockfish in your pocket.*
 
-Point your phone at a chess diagram in a book, a magazine or on a screen and get an
-interactive board with **on-device Stockfish analysis**, like ChessExpert / Chessvision.
+**The companion for every chess book.** Point your phone at a chess diagram in a book, a magazine or on a
+screen and get an interactive board with **on-device Stockfish analysis**: ask the engine about the move the
+author doesn't explain, check your answer to a puzzle, or play the position on.
 
 <p align="center">
   <img src="docs/analysis.png" width="260" alt="Analysis screen">
@@ -226,7 +227,7 @@ not supported yet; that needs real photos of boards to train on.
 ## License
 
 © 2026 Iman Soltanzadeh. PocketFish's source code is free software under the **GNU GPL v3** (see `LICENSE`); it ships
-Stockfish (GPLv3).
+Stockfish (GPLv3). PocketFish is an independent app, not affiliated with or endorsed by the Stockfish project.
 
 **All rights reserved, not GPL:** the trained recognition models (`public/models/`) and their training
 pipeline (`ml/`). They are a separate work: the GPL of Stockfish doesn't reach them, as recognition doesn't

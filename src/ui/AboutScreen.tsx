@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { PIECE_SETS } from '../board/pieceSets';
 import { openUrl } from '../app/platform';
-import { APP_NAME, APP_VERSION, BRAND, BRAND_URL, BRAND_URL_DE, DEVELOPER, SOURCE_URL, SUPPORT_EMAIL } from '../app/config';
+import { APP_NAME, APP_VERSION, BRAND, BRAND_URL, BRAND_URL_DE, DEVELOPER, LEGAL_URL, LEGAL_URL_DE, SOURCE_URL, SUPPORT_EMAIL } from '../app/config';
 import { appVersion } from '../app/support';
 import { IconCode, IconGlobe, IconLicence, IconMail, Logo } from './icons';
 import { language, t } from '../i18n';
@@ -20,6 +20,7 @@ const credits = (): { name: string; by: string; license: string }[] => [
 export function AboutScreen({ onLicences }: { onLicences: () => void }) {
   const [version, setVersion] = useState(APP_VERSION);
   const brandUrl = language() === 'de' ? BRAND_URL_DE : BRAND_URL;
+  const legalUrl = language() === 'de' ? LEGAL_URL_DE : LEGAL_URL;
   useEffect(() => {
     appVersion().then(setVersion);
   }, []);
@@ -69,6 +70,16 @@ export function AboutScreen({ onLicences }: { onLicences: () => void }) {
             <span>
               {t('about.source')}
               <small>{t('about.sourceHint')}</small>
+            </span>
+          </span>
+          <span className="chevron" aria-hidden="true">›</span>
+        </button>
+        <button className="setting nav-row" onClick={() => openUrl(legalUrl)} data-testid="imprint">
+          <span className="row-lead">
+            <IconLicence size={19} />
+            <span>
+              {t('about.imprint')}
+              <small>{legalUrl.replace(/^https?:\/\//, '')}</small>
             </span>
           </span>
           <span className="chevron" aria-hidden="true">›</span>

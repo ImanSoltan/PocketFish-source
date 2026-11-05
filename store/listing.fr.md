@@ -11,15 +11,21 @@ French typography wants; keep them when you copy.
 
 ## Subtitle (max 30)
 
-`Scannez, résolvez, jouez`
+`Pour tous vos livres d’échecs`
 
 ## Promotional text (max 170)
 
-Scannez un diagramme d’échecs et analysez-le avec Stockfish, résolvez des problèmes ou jouez contre le moteur. Tout sur l’iPhone : sans compte, sans pub, sans Internet.
+Le compagnon de vos livres d’échecs : scannez un diagramme, consultez Stockfish, vérifiez votre solution ou jouez la suite. Sur l’iPhone, sans compte ni Internet.
 
 ## Description (max 4000)
 
-Transformez n’importe quel diagramme d’échecs en une position à explorer, en toute confidentialité. Pointez l’appareil photo vers un diagramme dans un livre, un magazine ou sur un écran, ou choisissez une capture d’écran : PocketFish reconnaît l’échiquier et chaque pièce directement sur votre iPhone et l’ouvre sur un échiquier interactif. Rien n’est envoyé, et tout fonctionne sans connexion Internet.
+Le compagnon de tous vos livres d’échecs. Pointez l’appareil photo vers un diagramme dans un livre, un magazine ou sur un écran, ou choisissez une capture d’écran : PocketFish reconnaît l’échiquier et chaque pièce directement sur votre iPhone et ouvre la position sur un échiquier interactif, prête à être analysée, résolue ou jouée. Rien n’est envoyé, et tout fonctionne sans connexion Internet.
+
+CONÇU POUR VOS LIVRES D’ÉCHECS
+• Vérifiez votre réponse à un problème du livre avant de regarder les solutions
+• Demandez à Stockfish le coup que l’auteur n’explique pas
+• Jouez la suite d’une position de la page contre le moteur
+• Lit les diagrammes imprimés de toutes les époques, même les anciennes gravures
 
 CONFIDENTIEL PAR CONCEPTION
 • La reconnaissance de l’échiquier et le moteur Stockfish tournent entièrement sur votre iPhone
@@ -65,13 +71,13 @@ Tout dans PocketFish est gratuit. Si l’app vous plaît, vous pouvez laisser un
 
 L’app est disponible en français, anglais, allemand et espagnol.
 
-Le code source de PocketFish est un logiciel libre sous licence GNU GPL v3 et se trouve sur GitHub, chacun peut donc vérifier ce que fait l’app ; les modèles de reconnaissance entraînés n’en font pas partie. Moteur d’échecs : Stockfish (GPLv3), par les développeurs de Stockfish.
+Le code source de PocketFish est un logiciel libre sous licence GNU GPL v3 et se trouve sur GitHub, chacun peut donc vérifier ce que fait l’app ; les modèles de reconnaissance entraînés n’en font pas partie. Moteur d’échecs : Stockfish (GPLv3), par les développeurs de Stockfish. PocketFish est une app indépendante, sans lien avec le projet Stockfish ni approuvée par lui.
 
 Nécessite iOS 16.4 ou version ultérieure.
 
 ## Keywords (max 100, comma-separated, no spaces)
 
-`stockfish,problèmes,tactique,analyse,échiquier,livre,fen,caméra,moteur,hors-ligne,privé,photo,mat`
+`stockfish,problèmes,tactique,analyse,échiquier,diagramme,fen,caméra,moteur,hors-ligne,privé,mat`
 
 Words from the name and subtitle (scanner, échecs, scannez, résolvez, jouez) count already.
 
@@ -89,11 +95,12 @@ The same as in English (the support and privacy pages are in English; the app sa
 
 | file | caption |
 | --- | --- |
-| `1-scan` | Scannez tout diagramme — Livres, magazines ou écrans |
+| `0-book` | Le compagnon de tous vos livres d’échecs — Scannez, consultez Stockfish, jouez la suite |
+| `1-scan` | Directement depuis la page — Livres, magazines ou captures d’écran |
 | `2-review` | Chaque pièce reconnue — Vérifiez et corrigez d’un toucher |
-| `3-analyze` | Stockfish dans votre iPhone — Meilleurs coups et variantes, hors ligne |
-| `4-solve` | Trouvez le coup vous-même — Le mode Résoudre note chaque réponse |
+| `3-analyze` | Ce que le livre n’explique pas — Stockfish montre les meilleurs coups et variantes |
+| `4-solve` | Résolvez les problèmes du livre — Chaque réponse notée, des indices au besoin |
 | `5-puzzles` | Problèmes classés, hors ligne — Des milliers de tactiques et un problème du jour |
-| `6-play` | Jouez contre Stockfish — Huit niveaux, de débutant à pleine puissance |
+| `6-play` | Jouez la suite depuis la page — Contre Stockfish, de débutant à pleine puissance |
 | `7-private` | Confidentiel par conception — Sans compte, sans pistage, fonctionne hors ligne |
 | `8-themes` | À votre goût — 6 jeux de pièces, 5 thèmes de couleurs, mode sombre |
