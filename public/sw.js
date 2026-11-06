@@ -1,7 +1,7 @@
 // Offline support for the web / PWA version (not used inside the native apps).
 // Network-first: always fresh when online, cached copies when offline. The big
 // static files the app needs offline (engine, models, pieces, puzzles) are precached.
-const CACHE = 'chessy-v5';
+const CACHE = 'chessy-v6';
 const PRECACHE = [
   './',
   'index.html',

@@ -1,7 +1,8 @@
 // App icon, web icons and splash screens from one vector design, on the Agile With AI product construction:
-// a white fish (its eye and a fine gill line cut out, so the tile shows through) inside camera-viewfinder corners, and the studio's spark top right, where the
-// fourth corner would be (agilewithai-site brand/product-icons; canvas 1024, symbol inside the centred circle
-// of 56 %, secondary lines white at 55 %, the spark centred at 80 % / 20 %).
+// a white fish inside camera-viewfinder corners, and the studio's spark top right, where the fourth corner
+// would be (agilewithai-site brand/product-icons; canvas 1024, secondary lines white at 55 %). The fish is
+// drawn large, and its eye, a fine gill line and the scales cut out of it: the back of the body is a chessboard
+// whose dark squares are see-through, so the tile shows through them like through the eye.
 //
 //   node scripts/make-icons.mjs              # writes every icon and splash file, and ios/App/App/AppIcon.icon
 //   node scripts/make-icons.mjs --preview d  # only writes a preview sheet to d/icons-preview.png
@@ -29,27 +30,54 @@ const FISH_TAIL =
   'M368 512C334 476 300 446 248 414Q230 404 233 424C243 458 258 488 258 512C258 536 243 566 233 600Q230 620 248 610C300 578 334 548 368 512Z';
 const EYE = { cx: 688, cy: 494, r: 21 };
 const GILL = 'M630 432Q662 512 630 592';
-const CORNERS = [
-  'M232 324L232 258Q232 232 258 232L324 232',
-  'M232 700L232 766Q232 792 258 792L324 792',
-  'M792 700L792 766Q792 792 766 792L700 792',
-];
-/** the four-point spark of the Agile With AI logo, centred at (819, 205) */
+/** the scales: a chessboard of 53-unit squares on the back of the body (x 346–611, y 406–618: 5 × 4 squares) */
+const SCALES = { x0: 346, x1: 611, y0: 406, y1: 618, cell: 53, ox: 505, oy: 512 };
+/** where the fish sits: 1.32 times its drawn size, its centre (505, 512) moved to (520, 536) */
+const FISH_PLACE = 'translate(520 536) scale(1.32) translate(-505 -512)';
+/** the viewfinder corners, 150 from the edges, 96 long, with a radius of 26 */
+const CORNER = { inset: 150, length: 96, radius: 26 };
+const CORNERS = (() => {
+  const { inset: a, length: l, radius: r } = CORNER;
+  const b = 1024 - a;
+  return [
+    `M${a} ${a + l}L${a} ${a + r}Q${a} ${a} ${a + r} ${a}L${a + l} ${a}`,
+    `M${a} ${b - l}L${a} ${b - r}Q${a} ${b} ${a + r} ${b}L${a + l} ${b}`,
+    `M${b} ${b - l}L${b} ${b - r}Q${b} ${b} ${b - r} ${b}L${b - l} ${b}`,
+  ];
+})();
+/** the four-point spark of the Agile With AI logo, drawn centred at (819, 205), placed at (846, 178) at 90 % */
 const SPARK =
   'M819.2 122.88C829.03 176.128 847.872 194.97 901.12 204.8C847.872 214.63 829.03 233.472 819.2 286.72C809.37 233.472 790.528 214.63 737.28 204.8C790.528 194.97 809.37 176.128 819.2 122.88Z';
+const SPARK_PLACE = 'translate(846 178) scale(0.9) translate(-819.2 -204.8)';
 
-/** the fish; the eye (a hole in the body) and the gill (a masked gap) show whatever is behind it */
+/** the dark squares of the scales, as plain rectangles (Icon Composer reads no SVG patterns) */
+const scaleSquares = () => {
+  const { x0, x1, y0, y1, cell, ox, oy } = SCALES;
+  const squares = [];
+  for (let i = Math.floor((x0 - ox) / cell); ox + i * cell < x1; i++)
+    for (let j = Math.floor((y0 - oy) / cell); oy + j * cell < y1; j++) {
+      if ((((i + j) % 2) + 2) % 2 !== 0) continue;
+      const x = Math.max(x0, ox + i * cell);
+      const y = Math.max(y0, oy + j * cell);
+      const w = Math.min(x1, ox + (i + 1) * cell) - x;
+      const h = Math.min(y1, oy + (j + 1) * cell) - y;
+      if (w > 0 && h > 0) squares.push(`<rect x="${x}" y="${y}" width="${w}" height="${h}"/>`);
+    }
+  return squares.join('');
+};
+
+/** the fish; the eye, the gill and the dark squares are cut out of it and show whatever is behind it */
 const fishSvg = () => {
   const r = EYE.r;
   const eye = `M${EYE.cx - r} ${EYE.cy}a${r} ${r} 0 1 0 ${2 * r} 0a${r} ${r} 0 1 0 ${-2 * r} 0Z`;
-  return `<defs><mask id="gill"><rect width="1024" height="1024" fill="#ffffff"/><path d="${GILL}" fill="none" stroke="#000000" stroke-width="13" stroke-linecap="round"/></mask></defs>
-  <g mask="url(#gill)"><path fill-rule="evenodd" d="${FISH_BODY}${eye}" fill="#ffffff"/><path d="${FISH_TAIL}" fill="#ffffff"/></g>`;
+  return `<g transform="${FISH_PLACE}"><defs><mask id="cutouts" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024"><rect width="1024" height="1024" fill="#ffffff"/><g fill="#000000">${scaleSquares()}</g><path d="${GILL}" fill="none" stroke="#000000" stroke-width="13" stroke-linecap="round"/></mask></defs>
+  <g mask="url(#cutouts)"><path fill-rule="evenodd" d="${FISH_BODY}${eye}" fill="#ffffff"/><path d="${FISH_TAIL}" fill="#ffffff"/></g></g>`;
 };
 const cornersSvg = (opacity = 0.55) =>
   CORNERS.map(
     (d) => `<path d="${d}" fill="none" stroke="#ffffff" stroke-width="40" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="${opacity}"/>`,
   ).join('\n  ');
-const sparkSvg = () => `<path d="${SPARK}" fill="#ffffff"/>`;
+const sparkSvg = () => `<path transform="${SPARK_PLACE}" d="${SPARK}" fill="#ffffff"/>`;
 const canvas = (inner) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   ${inner}
 </svg>`;
@@ -215,7 +243,7 @@ for (const [file, v] of [['public/icon.svg', 'light'], ['public/icon-dark.svg', 
 // white with the corners at 55 %, so they come out lighter in any colour
 fs.writeFileSync(
   out('public/icon-glyph.svg'),
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="216 107 701 701" width="701" height="701">
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="126 100 798 798" width="798" height="798">
   ${fishSvg()}
   ${cornersSvg(0.55)}
   ${sparkSvg()}
@@ -258,6 +286,8 @@ await write('resources/splash-dark.png', splash(2732, 2732, 'dark'), 2732, 2732)
 
 // Android: launcher icons (legacy, round, adaptive layers) and splash drawables
 const res = 'android/app/src/main/res';
+// the corners reach 150 from the edges: shrunk to 66 %, they stay inside the launchers' round masks
+const ANDROID_GLYPH = 0.66;
 const DENSITY = { ldpi: 0.75, mdpi: 1, hdpi: 1.5, xhdpi: 2, xxhdpi: 3, xxxhdpi: 4 };
 for (const [d, k] of Object.entries(DENSITY)) {
   const legacy = Math.round(48 * k);
@@ -272,7 +302,7 @@ for (const [d, k] of Object.entries(DENSITY)) {
   );
   await write(
     `${res}/mipmap-${d}/ic_launcher_round.png`,
-    `<img src="${dataUrl(sized(iconSvg('light', { glyphScale: 0.84 }), legacy))}" style="width:${legacy}px;height:${legacy}px;border-radius:50%;display:block">`,
+    `<img src="${dataUrl(sized(iconSvg('light', { glyphScale: 0.65 }), legacy))}" style="width:${legacy}px;height:${legacy}px;border-radius:50%;display:block">`,
     legacy,
     legacy,
     { transparent: true },
@@ -281,14 +311,14 @@ for (const [d, k] of Object.entries(DENSITY)) {
   await write(`${res}/mipmap-${d}/ic_launcher_background.png`, icon('light', layer, { glyphScale: 0, background: true }), layer, layer);
   await write(
     `${res}/mipmap-${d}/ic_launcher_foreground.png`,
-    icon('light', layer, { glyphScale: 0.85, background: false }),
+    icon('light', layer, { glyphScale: ANDROID_GLYPH, background: false }),
     layer,
     layer,
     { transparent: true },
   );
   await write(
     `${res}/mipmap-${d}/ic_launcher_monochrome.png`,
-    icon('light', layer, { glyphScale: 0.85, background: false, mono: true }),
+    icon('light', layer, { glyphScale: ANDROID_GLYPH, background: false, mono: true }),
     layer,
     layer,
     { transparent: true },
