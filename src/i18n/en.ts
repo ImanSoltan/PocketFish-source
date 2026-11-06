@@ -50,7 +50,7 @@ export const en = {
   'welcome.modes':
     "<b>Analyze</b> shows Stockfish's best moves; <b>Solve</b> hides them so you can find the move yourself; <b>Play</b> it out against Stockfish.",
   'welcome.puzzles': '<b>Puzzles</b>: thousands of rated tactics and a puzzle of the day.',
-  'welcome.newGame': 'Tap <b>Board twice</b> for a new game.',
+  'welcome.newGame': 'For a new game, tap <k>Board</k> twice in the bar at the bottom.',
   'welcome.private': '<b>Private</b>: your photos and positions never leave your phone, and everything works offline.',
   'welcome.gotIt': 'Got it',
 

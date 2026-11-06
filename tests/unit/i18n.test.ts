@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { afterEach, describe, expect, it } from 'vitest';
 import { LANGUAGES, detectLanguage, language, setLanguage, t } from '../../src/i18n';
@@ -11,7 +12,7 @@ import { parseFen, validate } from '../../src/chess/position';
 
 const TRANSLATIONS = { de, es, fr } as const;
 const placeholders = (s: string) => [...s.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort();
-const markup = (s: string) => [...s.matchAll(/<\/?[bmv]>/g)].map((m) => m[0]).join('');
+const markup = (s: string) => [...s.matchAll(/<\/?[bmvk]>/g)].map((m) => m[0]).join('');
 
 afterEach(() => {
   setLanguage('en');
@@ -24,7 +25,7 @@ describe('translations', () => {
         expect(Object.keys(messages).sort()).toEqual(Object.keys(en).sort());
       });
 
-      it('keeps every {placeholder} and every <b>/<m>/<v> tag', () => {
+      it('keeps every {placeholder} and every <b>/<m>/<v>/<k> tag', () => {
         for (const [key, text] of Object.entries(en)) {
           const translated = messages[key as keyof typeof en];
           expect(placeholders(translated), key).toEqual(placeholders(text));
@@ -97,6 +98,12 @@ describe('rich', () => {
   it('turns <b>, <m> and <v> into elements', () => {
     expect(renderToStaticMarkup(rich('Streak <b>3</b> <m>(+0.5)</m> <v>Qh5</v>'))).toBe(
       'Streak <b>3</b> <span class="muted">(+0.5)</span> <span class="solve-move">Qh5</span>',
+    );
+  });
+
+  it('turns <k> into a chip of an app button, with its icon', () => {
+    expect(renderToStaticMarkup(rich('Tap <k>Board</k> twice', createElement('i', null, 'icon')))).toBe(
+      'Tap <span class="ui-chip"><i>icon</i>Board</span> twice',
     );
   });
 

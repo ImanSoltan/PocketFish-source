@@ -1,10 +1,8 @@
 import { expect, test } from '@playwright/test';
-import { clickSquare } from './helpers';
+import { clickSquare, startFresh } from './helpers';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/');
-  await page.evaluate(() => localStorage.clear());
-  await page.reload();
+  await startFresh(page);
 });
 
 test('analyses the start position on the device', async ({ page }) => {
@@ -107,7 +105,10 @@ test('tapping Board twice starts a new game, which can be undone', async ({ page
 
 test('a damaged saved position opens the start position instead of a blank screen', async ({ page }) => {
   await page.evaluate(() =>
-    localStorage.setItem('chessy.line.v1', JSON.stringify({ rootFen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1', moves: [null], ply: -1 })),
+    localStorage.setItem(
+      'chessy.line.v1',
+      JSON.stringify({ rootFen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1', moves: [null], ply: -1 }),
+    ),
   );
   await page.reload();
   await expect(page.getByTestId('status')).toHaveText('Starting Position');

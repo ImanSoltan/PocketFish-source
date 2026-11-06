@@ -6,6 +6,19 @@ import type { Page } from '@playwright/test';
 export const hasModels = fs.existsSync(fileURLToPath(new URL('../../public/models/board.bin', import.meta.url)));
 export const NO_MODELS = 'needs the recognition models, which are not part of the public source';
 
+/**
+ * Opens the app with nothing stored, as on a first start, except that the first-run tips are already dismissed
+ * (they float over the screen and would catch the taps). The tests about the tips clear everything instead.
+ */
+export async function startFresh(page: Page) {
+  await page.goto('/');
+  await page.evaluate(() => {
+    localStorage.clear();
+    localStorage.setItem('chessy.tips-dismissed.v1', 'true');
+  });
+  await page.reload();
+}
+
 /** Screen position of a square's centre on the (first) board, scrolled into view. */
 export async function square(page: Page, name: string) {
   const board = page.locator('svg.board').first();

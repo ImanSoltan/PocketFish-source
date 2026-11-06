@@ -30,8 +30,11 @@ test('never talks to a server: scanning, analysis, Solve mode, puzzles, settings
   page.on('console', (m) => /Content.Security.Policy/i.test(m.text()) && blocked.push(m.text()));
 
   await page.goto('/');
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
   await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toHaveCount(1);
   await expect(page.getByTestId('welcome')).toContainText('never leave your phone');
+  await page.getByTestId('welcome').getByRole('button', { name: 'Got it' }).click();
   await page.getByTestId('scan').click();
   await expect(page.getByTestId('privacy-note')).toContainText('never uploaded');
   await page.getByLabel('Back').click();
@@ -66,6 +69,7 @@ test('recent scans are only kept while "Remember recent scans" is on', async ({ 
   await page.goto('/');
   await page.evaluate(() => {
     localStorage.clear();
+    localStorage.setItem('chessy.tips-dismissed.v1', 'true');
     const old = { id: '1', fen: '4k3/8/8/8/8/8/8/4K2R w K - 0 1', thumb: null, time: 1 };
     localStorage.setItem('chessy.history.v1', JSON.stringify([old]));
   });

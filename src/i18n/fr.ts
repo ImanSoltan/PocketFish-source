@@ -47,7 +47,7 @@ export const fr: Messages = {
   'welcome.modes':
     '<b>Analyser</b> montre les meilleurs coups de Stockfish ; <b>Résoudre</b> les cache pour que vous trouviez le coup vous-même ; avec <b>Jouer</b>, vous disputez la position contre Stockfish.',
   'welcome.puzzles': '<b>Problèmes</b> : des milliers de problèmes tactiques classés et un problème du jour.',
-  'welcome.newGame': 'Touchez <b>deux fois Échiquier</b> pour une nouvelle partie.',
+  'welcome.newGame': 'Pour une nouvelle partie, touchez deux fois <k>Échiquier</k> dans la barre du bas.',
   'welcome.private':
     '<b>Confidentiel</b> : vos photos et vos positions ne quittent jamais votre téléphone, et tout fonctionne hors ligne.',
   'welcome.gotIt': 'J’ai compris',

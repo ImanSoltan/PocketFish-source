@@ -47,7 +47,7 @@ export const es: Messages = {
   'welcome.modes':
     '<b>Analizar</b> muestra las mejores jugadas de Stockfish; <b>Resolver</b> las oculta para que encuentres la jugada tú mismo; con <b>Jugar</b> disputas la posición contra Stockfish.',
   'welcome.puzzles': '<b>Problemas</b>: miles de ejercicios de táctica con puntuación y un problema del día.',
-  'welcome.newGame': 'Toca <b>Tablero dos veces</b> para empezar una nueva partida.',
+  'welcome.newGame': 'Para una nueva partida, toca dos veces <k>Tablero</k> en la barra inferior.',
   'welcome.private': '<b>Privado</b>: tus fotos y posiciones nunca salen de tu teléfono, y todo funciona sin conexión.',
   'welcome.gotIt': 'Entendido',
 

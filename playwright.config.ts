@@ -11,6 +11,14 @@ export default defineConfig({
     ...devices['iPhone 13'],
     browserName: 'chromium',
     baseURL: 'http://127.0.0.1:4173',
+    // the first-run tips float over the screen until dismissed: tests start without them (the tests about
+    // the tips clear the storage first)
+    storageState: {
+      cookies: [],
+      origins: [
+        { origin: 'http://127.0.0.1:4173', localStorage: [{ name: 'chessy.tips-dismissed.v1', value: 'true' }] },
+      ],
+    },
     launchOptions: process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {},
   },
   webServer: {

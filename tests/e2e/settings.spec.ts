@@ -83,7 +83,7 @@ test('first-run tips: shown once, dismissed, and shown again from Settings', asy
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   const tips = page.getByTestId('welcome');
-  await expect(tips).toContainText('Tap Board twice');
+  await expect(tips.locator('.ui-chip')).toHaveText('Board');
   await tips.getByRole('button', { name: 'Got it' }).click();
   await expect(tips).toHaveCount(0);
   await page.reload();

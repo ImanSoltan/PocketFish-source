@@ -1,12 +1,10 @@
 import { expect, test } from '@playwright/test';
-import { clickSquare, loadFen } from './helpers';
+import { clickSquare, loadFen, startFresh } from './helpers';
 
 const BACK_RANK = '6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1'; // 1.Rd8#
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/');
-  await page.evaluate(() => localStorage.clear());
-  await page.reload();
+  await startFresh(page);
   await page.getByRole('tab', { name: 'Solve' }).click();
 });
 

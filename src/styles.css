@@ -1665,11 +1665,59 @@ input.switch:checked::after {
 }
 
 /* ---------- first-run tips ---------- */
+/* a glass sheet floating above the bottom bar; the screen stays visible, dimmed, behind it */
+.welcome-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+}
+
+.welcome-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.22);
+  animation: welcome-fade 0.25s ease-out;
+}
+
 .welcome {
-  padding: 16px;
+  position: absolute;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom) + 10px);
+  transform: translateX(-50%);
+  width: min(100% - 24px, 536px);
+  max-height: calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 80px);
+  overflow-y: auto;
+  padding: 20px 18px 18px;
+  border-radius: 30px;
+  background: var(--glass-strong);
+  -webkit-backdrop-filter: saturate(190%) blur(30px);
+  backdrop-filter: saturate(190%) blur(30px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-float), inset 0 1px 0 var(--glass-highlight);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  animation: welcome-rise 0.38s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+}
+
+@keyframes welcome-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes welcome-rise {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 24px) scale(0.97);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome,
+  .welcome-backdrop {
+    animation: none;
+  }
 }
 
 .welcome-title {
@@ -1711,8 +1759,24 @@ input.switch:checked::after {
   margin: 0;
 }
 
+/* a button of the app named in a text (<k> in the translations): its icon and label, as in the bars */
+.ui-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 8px 1px 6px;
+  margin: 0 1px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 600;
+  white-space: nowrap;
+  vertical-align: 1px;
+  line-height: 1.35;
+}
+
 .welcome .primary {
-  align-self: flex-start;
+  align-self: stretch;
 }
 
 /* ---------- win / draw / loss chances ---------- */
@@ -2089,6 +2153,7 @@ button.setting {
   .topbar,
   .bottombar,
   .with-actions .actions,
+  .welcome,
   .toast,
   .tool,
   .secondary {

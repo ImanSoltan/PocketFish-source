@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
 import { Chess } from 'chess.js';
-import { playUci } from './helpers';
+import { playUci, startFresh } from './helpers';
 
 interface Puzzle {
   id: string;
@@ -54,9 +54,7 @@ function wrongMove(p: Puzzle) {
 const rating = async (page: Page) => Number((await page.getByTestId('rating').textContent())!.replace('?', ''));
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/');
-  await page.evaluate(() => localStorage.clear());
-  await page.reload();
+  await startFresh(page);
   await page.getByLabel('Puzzles', { exact: true }).click();
 });
 

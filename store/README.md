@@ -107,7 +107,7 @@ Then fill in, using [`listing.md`](listing.md):
   → publish. The label then reads *Data Not Collected*.
 - **Pricing and Availability**: *Free*; all countries (or a selection). Under *iPhone and iPad Apps on Apple
   Silicon Macs* you can untick Mac availability if you don't want to test it there.
-- **Version 1.0**: screenshots (drag the eight files from `store/screenshots` into the 6.9" slot), promotional
+- **Version 1.0**: screenshots (drag the nine files from `store/screenshots` into the 6.9" slot), promotional
   text, description, keywords, support URL, marketing URL, copyright, and **App Review Information** (your
   contact details, the notes and `store/review-sample.jpg` as attachment). No sign-in is needed.
 

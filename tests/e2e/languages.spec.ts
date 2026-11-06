@@ -6,6 +6,8 @@ test.describe('on a German phone', () => {
 
   test('the app follows the phone’s language', async ({ page }) => {
     await page.goto('/');
+    await page.evaluate(() => localStorage.clear());
+    await page.reload();
     await expect(page.locator('html')).toHaveAttribute('lang', 'de');
     await expect(page.getByTestId('welcome')).toContainText('Willkommen bei PocketFish');
     await page.getByTestId('welcome').getByRole('button', { name: 'Verstanden' }).click();

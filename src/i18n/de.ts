@@ -47,7 +47,7 @@ export const de: Messages = {
   'welcome.modes':
     '<b>Analyse</b> zeigt die besten Züge von Stockfish; <b>Lösen</b> versteckt sie, damit du den Zug selbst findest; bei <b>Spielen</b> spielst du die Stellung gegen Stockfish aus.',
   'welcome.puzzles': '<b>Aufgaben</b>: Tausende bewertete Taktikaufgaben und eine Aufgabe des Tages.',
-  'welcome.newGame': 'Tippe <b>zweimal auf Brett</b> für eine neue Partie.',
+  'welcome.newGame': 'Für eine neue Partie tippst du unten in der Leiste zweimal auf <k>Brett</k>.',
   'welcome.private': '<b>Privat</b>: Deine Fotos und Stellungen verlassen nie dein Handy, und alles funktioniert offline.',
   'welcome.gotIt': 'Verstanden',
 
